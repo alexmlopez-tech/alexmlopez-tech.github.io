@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Alex Lopez — Cybersecurity Portfolio" />
+        <meta name="author" content="Alex Lopez" />
+        <title>Cybersecurity_Resume/Portfolio</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS-->
+        <link href="css/styles.css" rel="stylesheet" />
+
+        <style>
+            :root {
+                --cyber-dark:    #0a0e17;
+                --cyber-darker:  #060910;
+                --cyber-panel:   #0d1420;
+                --cyber-border:  #1a2d40;
+                --cyber-teal:    #0097b2;
+                --cyber-cyan:    #00c8ff;
+                --cyber-text:    #1a1a2e;
+                --cyber-muted:   #5a7a8a;
+                --cyber-light:   #c9d1d9;
+                --mono:          'Share Tech Mono', monospace;
+            }
+
+            /* ── Base ── */
+            *, *::before, *::after { box-sizing: border-box; }
+
+            body {
+                background-color: var(--cyber-dark);
+                color: var(--cyber-light);
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                margin: 0;
+                overflow-x: hidden;
+            }
+
+            /* Scanline overlay */
+            body::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                background: repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,151,178,0.015) 2px,
+                    rgba(0,151,178,0.015) 4px
+                );
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            /* ── Navbar ── */
+            .navbar {
+                background: rgba(6, 9, 16, 0.92) !important;
+                border-bottom: 1px solid var(--cyber-border);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                padding: 0.85rem 0;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+
+            .navbar-brand {
+                font-family: var(--mono);
+                font-size: 0.8rem;
+                color: var(--cyber-teal) !important;
+                letter-spacing: 0.05em;
+                text-decoration: none;
+            }
+
+            .navbar-brand::before {
+                content: '> ';
+                color: var(--cyber-cyan);
+                opacity: 0.6;
+            }
+
+            .nav-link {
+                font-family: var(--mono);
+                font-size: 0.75rem;
+                color: var(--cyber-muted) !important;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                padding: 0.5rem 1rem !important;
+                transition: color 0.2s;
+                position: relative;
+            }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 1rem;
+                right: 1rem;
+                height: 1px;
+                background: var(--cyber-teal);
+                transform: scaleX(0);
+                transition: transform 0.2s;
+            }
+
+            .nav-link:hover {
+                color: var(--cyber-teal) !important;
+            }
+
+            .nav-link:hover::after {
+                transform: scaleX(1);
+            }
+
+            .navbar-toggler {
+                border-color: var(--cyber-border);
+            }
+
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 151, 178, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            }
+
+            /* ── Hero ── */
+            .hero {
+                min-height: calc(100vh - 60px);
+                display: flex;
+                align-items: center;
+                position: relative;
+                overflow: hidden;
+                padding: 5rem 0;
+            }
+
+            /* Animated grid background */
+            .hero::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background-image:
+                    linear-gradient(rgba(0,151,178,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,151,178,0.04) 1px, transparent 1px);
+                background-size: 60px 60px;
+                animation: gridDrift 20s linear infinite;
+            }
+
+            @keyframes gridDrift {
+                0%   { transform: translateY(0); }
+                100% { transform: translateY(60px); }
+            }
+
+            /* Radial glow */
+            .hero::after {
+                content: '';
+                position: absolute;
+                top: -20%;
+                right: -10%;
+                width: 60vw;
+                height: 60vw;
+                background: radial-gradient(ellipse, rgba(0,151,178,0.07) 0%, transparent 65%);
+                pointer-events: none;
+            }
+
+            .hero-content {
+                position: relative;
+                z-index: 1;
+            }
+
+            /* Classification badge */
+            .classification-badge {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-family: var(--mono);
+                font-size: 0.7rem;
+                color: var(--cyber-teal);
+                border: 1px solid rgba(0,151,178,0.3);
+                background: rgba(0,151,178,0.06);
+                padding: 0.35rem 0.9rem;
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                margin-bottom: 1.5rem;
+                animation: fadeSlideDown 0.6s ease both;
+            }
+
+            .classification-badge .dot {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--cyber-teal);
+                animation: pulse 2s ease-in-out infinite;
+            }
+
+            @keyframes pulse {
+                0%, 100% { opacity: 1; transform: scale(1); }
+                50%       { opacity: 0.4; transform: scale(0.7); }
+            }
+
+            .hero-subtitle {
+                font-family: var(--mono);
+                font-size: 0.85rem;
+                color: var(--cyber-muted);
+                letter-spacing: 0.08em;
+                margin-bottom: 1rem;
+                animation: fadeSlideDown 0.6s 0.1s ease both;
+            }
+
+            .hero-title {
+                font-size: clamp(2.4rem, 5vw, 4rem);
+                font-weight: 800;
+                line-height: 1.1;
+                color: #fff;
+                margin-bottom: 1.5rem;
+                animation: fadeSlideDown 0.7s 0.2s ease both;
+            }
+
+            .hero-title .accent {
+                background: linear-gradient(135deg, var(--cyber-teal) 0%, var(--cyber-cyan) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .hero-desc {
+                font-size: 1rem;
+                color: rgba(201,209,217,0.7);
+                line-height: 1.7;
+                max-width: 480px;
+                margin-bottom: 2.5rem;
+                animation: fadeSlideDown 0.7s 0.3s ease both;
+            }
+
+            .hero-actions {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+                animation: fadeSlideDown 0.7s 0.4s ease both;
+            }
+
+            .btn-cyber {
+                font-family: var(--mono);
+                font-size: 0.75rem;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                padding: 0.85rem 2rem;
+                border: 1px solid var(--cyber-teal);
+                background: rgba(0,151,178,0.12);
+                color: var(--cyber-teal);
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                transition: all 0.25s;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .btn-cyber::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: var(--cyber-teal);
+                transform: translateX(-101%);
+                transition: transform 0.25s;
+                z-index: 0;
+            }
+
+            .btn-cyber span { position: relative; z-index: 1; }
+
+            .btn-cyber:hover {
+                color: var(--cyber-dark);
+            }
+
+            .btn-cyber:hover::before {
+                transform: translateX(0);
+            }
+
+            .btn-cyber-ghost {
+                font-family: var(--mono);
+                font-size: 0.75rem;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                padding: 0.85rem 2rem;
+                border: 1px solid var(--cyber-border);
+                background: transparent;
+                color: var(--cyber-muted);
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                transition: all 0.25s;
+            }
+
+            .btn-cyber-ghost:hover {
+                border-color: var(--cyber-teal);
+                color: var(--cyber-teal);
+            }
+
+            /* ── Profile Panel ── */
+            .profile-panel {
+                position: relative;
+                animation: fadeSlideUp 0.8s 0.3s ease both;
+            }
+
+            .profile-frame {
+                position: relative;
+                width: 100%;
+                max-width: 420px;
+                margin: 0 auto;
+                aspect-ratio: 1;
+            }
+
+            /* Corner brackets */
+            .profile-frame::before,
+            .profile-frame::after {
+                content: '';
+                position: absolute;
+                width: 28px;
+                height: 28px;
+                z-index: 2;
+                pointer-events: none;
+            }
+
+            .profile-frame::before {
+                top: 12px; left: 12px;
+                border-top: 2px solid var(--cyber-teal);
+                border-left: 2px solid var(--cyber-teal);
+            }
+
+            .profile-frame::after {
+                bottom: 12px; right: 12px;
+                border-bottom: 2px solid var(--cyber-teal);
+                border-right: 2px solid var(--cyber-teal);
+            }
+
+            .corner-tr, .corner-bl {
+                position: absolute;
+                width: 28px;
+                height: 28px;
+                z-index: 2;
+                pointer-events: none;
+            }
+
+            .corner-tr {
+                top: 12px; right: 12px;
+                border-top: 2px solid var(--cyber-cyan);
+                border-right: 2px solid var(--cyber-cyan);
+            }
+
+            .corner-bl {
+                bottom: 12px; left: 12px;
+                border-bottom: 2px solid var(--cyber-cyan);
+                border-left: 2px solid var(--cyber-cyan);
+            }
+
+            .profile-img-wrap {
+                width: 100%;
+                height: 100%;
+                border-radius: 4px;
+                overflow: hidden;
+                background: linear-gradient(135deg, var(--cyber-teal) 0%, var(--cyber-cyan) 100%);
+                position: relative;
+            }
+
+            .profile-img-wrap img {
+                width: 100%;
+                height: 110%;
+                object-fit: cover;
+                object-position: center top;
+                display: block;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+
+            /* Scan line on hover */
+            .profile-img-wrap::after {
+                content: '';
+                position: absolute;
+                top: -100%;
+                left: 0;
+                right: 0;
+                height: 100%;
+                background: linear-gradient(
+                    transparent 0%,
+                    rgba(0,151,178,0.08) 50%,
+                    transparent 100%
+                );
+                animation: scanProfile 4s linear infinite;
+            }
+
+            @keyframes scanProfile {
+                0%   { top: -100%; }
+                100% { top: 100%; }
+            }
+
+            /* Status tag below profile */
+            .profile-status {
+                font-family: var(--mono);
+                font-size: 0.68rem;
+                color: var(--cyber-teal);
+                letter-spacing: 0.1em;
+                text-align: center;
+                margin-top: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+            }
+
+            .profile-status .status-dot {
+                width: 7px;
+                height: 7px;
+                background: #00ff88;
+                border-radius: 50%;
+                box-shadow: 0 0 6px #00ff88;
+                animation: pulse 1.8s ease-in-out infinite;
+            }
+
+            /* ── About Section ── */
+            .about-section {
+                background: #0d1117;
+                border-top: 1px solid var(--cyber-border);
+                border-bottom: 1px solid var(--cyber-border);
+                padding: 6rem 0;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .about-section::before {
+                content: '';
+                position: absolute;
+                bottom: -30%;
+                left: -10%;
+                width: 50vw;
+                height: 50vw;
+                background: radial-gradient(ellipse, rgba(0,200,255,0.04) 0%, transparent 65%);
+                pointer-events: none;
+            }
+
+            .section-label {
+                font-family: var(--mono);
+                font-size: 0.68rem;
+                color: var(--cyber-teal);
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                margin-bottom: 0.75rem;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .section-label::before {
+                content: '';
+                display: inline-block;
+                width: 24px;
+                height: 1px;
+                background: var(--cyber-teal);
+            }
+
+            .about-heading {
+                font-size: clamp(2rem, 4vw, 3rem);
+                font-weight: 800;
+                color: #fff;
+                line-height: 1.15;
+                margin-bottom: 1.5rem;
+            }
+
+            .about-heading .accent {
+                background: linear-gradient(135deg, var(--cyber-teal) 0%, var(--cyber-cyan) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .about-body {
+                font-size: 0.975rem;
+                color: rgba(201,209,217,0.75);
+                line-height: 1.85;
+                margin-bottom: 2rem;
+            }
+
+            .social-links {
+                display: flex;
+                gap: 1rem;
+            }
+
+            .social-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-family: var(--mono);
+                font-size: 0.72rem;
+                letter-spacing: 0.1em;
+                color: var(--cyber-muted);
+                text-decoration: none;
+                border: 1px solid var(--cyber-border);
+                padding: 0.5rem 1rem;
+                transition: all 0.2s;
+            }
+
+            .social-link:hover {
+                color: var(--cyber-teal);
+                border-color: var(--cyber-teal);
+                background: rgba(0,151,178,0.06);
+            }
+
+            /* Intel sidebar */
+            .intel-panel {
+                background: rgba(0,151,178,0.04);
+                border: 1px solid var(--cyber-border);
+                border-left: 3px solid var(--cyber-teal);
+                padding: 1.75rem;
+                position: relative;
+            }
+
+            .intel-panel::before {
+                content: 'OPERATOR PROFILE';
+                font-family: var(--mono);
+                font-size: 0.62rem;
+                letter-spacing: 0.2em;
+                color: var(--cyber-teal);
+                position: absolute;
+                top: -0.6rem;
+                left: 1rem;
+                background: #0d1117;
+                padding: 0 0.5rem;
+            }
+
+            .intel-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                padding: 0.75rem 0;
+                border-bottom: 1px solid rgba(26,45,64,0.6);
+                gap: 1rem;
+            }
+
+            .intel-row:last-child {
+                border-bottom: none;
+                padding-bottom: 0;
+            }
+
+            .intel-label {
+                font-family: var(--mono);
+                font-size: 0.65rem;
+                color: var(--cyber-muted);
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                white-space: nowrap;
+                flex-shrink: 0;
+            }
+
+            .intel-value {
+                font-size: 0.8rem;
+                color: var(--cyber-light);
+                text-align: right;
+                line-height: 1.4;
+            }
+
+            .intel-value .tag {
+                display: inline-block;
+                font-family: var(--mono);
+                font-size: 0.62rem;
+                background: rgba(0,151,178,0.12);
+                border: 1px solid rgba(0,151,178,0.25);
+                color: var(--cyber-teal);
+                padding: 0.15rem 0.5rem;
+                margin: 0.1rem;
+                letter-spacing: 0.05em;
+            }
+
+            /* ── Footer ── */
+            footer {
+                background: var(--cyber-darker);
+                border-top: 1px solid var(--cyber-border);
+                padding: 1.5rem 0;
+            }
+
+            .footer-inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .footer-copy {
+                font-family: var(--mono);
+                font-size: 0.68rem;
+                color: var(--cyber-muted);
+                letter-spacing: 0.08em;
+            }
+
+            .footer-copy span {
+                color: var(--cyber-teal);
+            }
+
+            /* ── Animations ── */
+            @keyframes fadeSlideDown {
+                from { opacity: 0; transform: translateY(-16px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+
+            @keyframes fadeSlideUp {
+                from { opacity: 0; transform: translateY(20px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+
+            /* ── Responsive ── */
+            @media (max-width: 991px) {
+                .hero { padding: 3rem 0 4rem; min-height: auto; }
+                .profile-frame { max-width: 300px; margin-bottom: 1rem; }
+                .hero-desc { max-width: 100%; }
+                .about-section { padding: 4rem 0; }
+                .intel-panel { margin-top: 2.5rem; }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container px-5">
+                <a class="navbar-brand" href="index.html">Built to Defend. Trained to Detect.</a>
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+                        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Hero -->
+            <section class="hero">
+                <div class="container px-5 hero-content">
+                    <div class="row gx-5 align-items-center">
+
+                        <!-- Left: Text -->
+                        <div class="col-lg-6 order-2 order-lg-1">
+                            <div class="classification-badge">
+                                <span class="dot"></span>
+                                Detection <span class="dot"></span> Defense <span class="dot"></span> Resilience
+                            </div>
+                            <p class="hero-subtitle">// Forged in Military Aviation</p>
+                            <h1 class="hero-title">
+                                Focused on Defending<br>
+                                <span class="accent">Digital Battlefields</span>
+                            </h1>
+                            <p class="hero-desc">
+                                Military-trained. Security-focused. Combining operational discipline with hands-on technical expertise to detect threats, protect systems, and respond with precision.
+                            </p>
+                            <div class="hero-actions">
+                                <a class="btn-cyber" href="resume.html"><span>View Resume</span></a>
+                                <a class="btn-cyber-ghost" href="projects.html">Projects &rarr;</a>
+                            </div>
+                        </div>
+
+                        <!-- Right: Profile -->
+                        <div class="col-lg-6 order-1 order-lg-2 d-flex justify-content-center mb-5 mb-lg-0">
+                            <div class="profile-panel">
+                                <div class="profile-frame">
+                                    <span class="corner-tr"></span>
+                                    <span class="corner-bl"></span>
+                                    <div class="profile-img-wrap">
+                                        <img src="assets/profile.png" alt="Alex Lopez" />
+                                    </div>
+                                </div>
+                                <div class="profile-status">
+                                    <span class="status-dot"></span>
+                                    OPERATOR: ALEX LOPEZ &nbsp;//&nbsp; STATUS: ACTIVE
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <!-- About -->
+            <section class="about-section">
+                <div class="container px-5" style="position:relative; z-index:1;">
+                    <div class="row gx-5 align-items-start">
+
+                        <!-- Left: About text -->
+                        <div class="col-lg-7 mb-5 mb-lg-0">
+                            <p class="section-label">About Me</p>
+                            <h2 class="about-heading">
+                                Military Precision.<br>
+                                <span class="accent">Cyber Expertise.</span>
+                            </h2>
+                            <p class="about-body">
+                                My name is Alex Lopez, and I bring military precision and a problem-solving mindset to protecting systems in the world of cybersecurity. Focused on building resilient systems and defending against evolving cyber threats, this portfolio highlights practical experience in security operations, threat detection, and risk mitigation.
+                            </p>
+                            <p class="about-body">
+                                Combining hands-on technical expertise with disciplined, mission-driven problem solving, the work presented demonstrates a commitment to continuous learning and real-world impact in cybersecurity.
+                            </p>
+                            <div class="social-links">
+                                <a class="social-link" href="https://www.linkedin.com/in/alexmlopez7823/" target="_blank" rel="noopener">
+                                    <i class="bi bi-linkedin"></i> LinkedIn
+                                </a>
+                                <a class="social-link" href="https://github.com/alexmlopez-tech" target="_blank" rel="noopener">
+                                    <i class="bi bi-github"></i> GitHub
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Right: Intel panel -->
+                        <div class="col-lg-5">
+                            <div class="intel-panel">
+                                <div class="intel-row">
+                                    <span class="intel-label">Designation</span>
+                                    <span class="intel-value">Alex Lopez</span>
+                                </div>
+                                <div class="intel-row">
+                                    <span class="intel-label">Background</span>
+                                    <span class="intel-value">Active Duty Military<br>Aviation Specialist</span>
+                                </div>
+                                <div class="intel-row">
+                                    <span class="intel-label">Certifications</span>
+                                    <span class="intel-value">
+                                        <span class="tag" title="CompTIA A+">CompTIA A+</span>
+                                        <span class="tag" title="CompTIA Network+">Net+</span>
+                                        <span class="tag" title="CompTIA Security+">Sec+</span>
+                                        <span class="tag" title="CompTIA Cybersecurity Analyst">CySA+</span>
+                                        <span class="tag" title="CompTIA IT Operations Specialist">CIOS</span>
+                                        <span class="tag" title="CompTIA Secure Infrastructure Specialist">CSIS</span>
+                                        <span class="tag" title="CompTIA Security Analytics Professional">CSAP</span>
+                                    </span>
+                                </div>
+                                <div class="intel-row">
+                                    <span class="intel-label">Focus Areas</span>
+                                    <span class="intel-value">
+                                        <span class="tag">Threat Detection</span>
+                                        <span class="tag">Incident Response</span>
+                                        <span class="tag">Security Ops</span>
+                                    </span>
+                                </div>
+                                <div class="intel-row">
+                                    <span class="intel-label">Education</span>
+                                    <span class="intel-value">BSIT — Expected Spring 2027</span>
+                                </div>
+                                <div class="intel-row">
+                                    <span class="intel-label">Status</span>
+                                    <span class="intel-value" style="color: #00ff88;">&#9679; Active &amp; Available</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container px-5">
+                <div class="footer-inner">
+                    <p class="footer-copy mb-0">&copy; 2026 <span>Alex Lopez</span> &mdash; All rights reserved.</p>
+                    <p class="footer-copy mb-0" style="font-size:0.6rem; opacity:0.5;">CYBERSECURITY_PORTFOLIO // v2.0</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS -->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

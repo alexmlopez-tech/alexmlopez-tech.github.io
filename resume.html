@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Alex Lopez — Resume" />
+        <meta name="author" content="Alex Lopez" />
+        <title>Cybersecurity_Resume/Portfolio</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS-->
+        <link href="css/styles.css" rel="stylesheet" />
+
+        <style>
+            :root {
+                --cyber-dark:    #0a0e17;
+                --cyber-darker:  #060910;
+                --cyber-panel:   #0d1420;
+                --cyber-border:  #1a2d40;
+                --cyber-teal:    #0097b2;
+                --cyber-cyan:    #00c8ff;
+                --cyber-text:    #1a1a2e;
+                --cyber-muted:   #5a7a8a;
+                --cyber-light:   #c9d1d9;
+                --mono:          'Share Tech Mono', monospace;
+            }
+
+            *, *::before, *::after { box-sizing: border-box; }
+
+            body {
+                background-color: var(--cyber-dark);
+                color: var(--cyber-light);
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                margin: 0;
+                overflow-x: hidden;
+            }
+
+            /* Scanline overlay */
+            body::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                background: repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,151,178,0.015) 2px,
+                    rgba(0,151,178,0.015) 4px
+                );
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            /* ── Navbar ── */
+            .navbar {
+                background: rgba(6, 9, 16, 0.92) !important;
+                border-bottom: 1px solid var(--cyber-border);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                padding: 0.85rem 0;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+
+            .navbar-brand {
+                font-family: var(--mono);
+                font-size: 0.8rem;
+                color: var(--cyber-teal) !important;
+                letter-spacing: 0.05em;
+                text-decoration: none;
+            }
+
+            .navbar-brand::before {
+                content: '> ';
+                color: var(--cyber-cyan);
+                opacity: 0.6;
+            }
+
+            .nav-link {
+                font-family: var(--mono);
+                font-size: 0.75rem;
+                color: var(--cyber-muted) !important;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                padding: 0.5rem 1rem !important;
+                transition: color 0.2s;
+                position: relative;
+            }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 1rem;
+                right: 1rem;
+                height: 1px;
+                background: var(--cyber-teal);
+                transform: scaleX(0);
+                transition: transform 0.2s;
+            }
+
+            .nav-link:hover { color: var(--cyber-teal) !important; }
+            .nav-link:hover::after { transform: scaleX(1); }
+
+            .navbar-toggler { border-color: var(--cyber-border); }
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 151, 178, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            }
+
+            /* ── Page Header ── */
+            .page-header {
+                padding: 4rem 0 3rem;
+                border-bottom: 1px solid var(--cyber-border);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .page-header::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background-image:
+                    linear-gradient(rgba(0,151,178,0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,151,178,0.03) 1px, transparent 1px);
+                background-size: 60px 60px;
+            }
+
+            .page-header::after {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 60vw;
+                height: 60vw;
+                background: radial-gradient(ellipse, rgba(0,151,178,0.06) 0%, transparent 65%);
+                pointer-events: none;
+            }
+
+            .page-header-inner {
+                position: relative;
+                z-index: 1;
+                text-align: center;
+            }
+
+            .page-label {
+                font-family: var(--mono);
+                font-size: 0.68rem;
+                color: var(--cyber-teal);
+                letter-spacing: 0.25em;
+                text-transform: uppercase;
+                margin-bottom: 0.75rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.75rem;
+            }
+
+            .page-label::before,
+            .page-label::after {
+                content: '';
+                display: inline-block;
+                width: 40px;
+                height: 1px;
+                background: var(--cyber-teal);
+                opacity: 0.5;
+            }
+
+            .page-title {
+                font-size: clamp(2.5rem, 5vw, 3.5rem);
+                font-weight: 800;
+                color: #fff;
+                margin-bottom: 0;
+                background: linear-gradient(135deg, var(--cyber-teal) 0%, var(--cyber-cyan) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            /* ── Download Button ── */
+            .btn-cyber {
+                font-family: var(--mono);
+                font-size: 0.75rem;
+                letter-spacing: 0.12em;
+                text-transform: uppercase;
+                padding: 0.75rem 1.75rem;
+                border: 1px solid var(--cyber-teal);
+                background: rgba(0,151,178,0.1);
+                color: var(--cyber-teal);
+                text-decoration: none;
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                transition: all 0.25s;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .btn-cyber::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: var(--cyber-teal);
+                transform: translateX(-101%);
+                transition: transform 0.25s;
+                z-index: 0;
+            }
+
+            .btn-cyber span, .btn-cyber i { position: relative; z-index: 1; }
+
+            .btn-cyber:hover { color: var(--cyber-dark); }
+            .btn-cyber:hover::before { transform: translateX(0); }
+
+            /* ── Section Headers ── */
+            .resume-section {
+                padding: 3rem 0 1rem;
+                position: relative;
+                z-index: 1;
+            }
+
+            .section-heading {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 2rem;
+                padding-bottom: 0.75rem;
+                border-bottom: 1px solid var(--cyber-border);
+            }
+
+            .section-heading h2 {
+                font-family: var(--mono);
+                font-size: 0.8rem;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                color: var(--cyber-teal);
+                margin: 0;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .section-heading h2::before {
+                content: '';
+                display: inline-block;
+                width: 18px;
+                height: 2px;
+                background: var(--cyber-teal);
+            }
+
+            /* ── Timeline Cards ── */
+            .timeline-card {
+                background: #0d1117;
+                border: 1px solid var(--cyber-border);
+                border-left: 3px solid var(--cyber-teal);
+                margin-bottom: 1.5rem;
+                display: grid;
+                grid-template-columns: 220px 1fr;
+                overflow: hidden;
+                transition: border-color 0.2s;
+            }
+
+            .timeline-card:hover {
+                border-color: var(--cyber-teal);
+                border-left-color: var(--cyber-cyan);
+            }
+
+            .timeline-card.edu {
+                border-left-color: var(--cyber-cyan);
+            }
+
+            .card-meta {
+                padding: 1.75rem;
+                background: rgba(0,151,178,0.04);
+                border-right: 1px solid var(--cyber-border);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+
+            .card-date {
+                font-family: var(--mono);
+                font-size: 0.68rem;
+                color: var(--cyber-teal);
+                letter-spacing: 0.1em;
+                margin-bottom: 0.5rem;
+            }
+
+            .timeline-card.edu .card-date {
+                color: var(--cyber-cyan);
+            }
+
+            .card-title {
+                font-size: 0.9rem;
+                font-weight: 700;
+                color: #fff;
+                margin-bottom: 0.25rem;
+                line-height: 1.3;
+            }
+
+            .card-org {
+                font-family: var(--mono);
+                font-size: 0.68rem;
+                color: var(--cyber-muted);
+                letter-spacing: 0.05em;
+            }
+
+            .card-body-text {
+                padding: 1.75rem;
+                font-size: 0.9rem;
+                color: rgba(201,209,217,0.75);
+                line-height: 1.8;
+                display: flex;
+                align-items: center;
+            }
+
+            /* ── Skills ── */
+            .skills-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 0.75rem;
+                margin-bottom: 2rem;
+            }
+
+            .skill-tag {
+                font-family: var(--mono);
+                font-size: 0.72rem;
+                letter-spacing: 0.06em;
+                color: var(--cyber-light);
+                background: rgba(0,151,178,0.06);
+                border: 1px solid var(--cyber-border);
+                padding: 0.65rem 1rem;
+                text-align: center;
+                transition: all 0.2s;
+            }
+
+            .skill-tag:hover {
+                border-color: var(--cyber-teal);
+                color: var(--cyber-teal);
+                background: rgba(0,151,178,0.1);
+            }
+
+            .subsection-label {
+                font-family: var(--mono);
+                font-size: 0.65rem;
+                color: var(--cyber-muted);
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .subsection-label i {
+                color: var(--cyber-teal);
+            }
+
+            /* ── Cert Badges ── */
+            .cert-grid {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+
+            .cert-badge {
+                background: #0d1117;
+                border: 1px solid var(--cyber-border);
+                padding: 1.25rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.2s;
+                position: relative;
+            }
+
+            .cert-badge::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(135deg, rgba(0,151,178,0.05) 0%, transparent 60%);
+                opacity: 0;
+                transition: opacity 0.2s;
+            }
+
+            .cert-badge:hover {
+                border-color: var(--cyber-teal);
+                transform: translateY(-2px);
+            }
+
+            .cert-badge:hover::before { opacity: 1; }
+
+            .cert-badge img {
+                height: 70px;
+                width: auto;
+                display: block;
+                position: relative;
+                z-index: 1;
+            }
+
+            /* ── Footer ── */
+            footer {
+                background: var(--cyber-darker);
+                border-top: 1px solid var(--cyber-border);
+                padding: 1.5rem 0;
+                margin-top: 4rem;
+            }
+
+            .footer-inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .footer-copy {
+                font-family: var(--mono);
+                font-size: 0.68rem;
+                color: var(--cyber-muted);
+                letter-spacing: 0.08em;
+            }
+
+            .footer-copy span { color: var(--cyber-teal); }
+
+            /* ── Responsive ── */
+            @media (max-width: 767px) {
+                .timeline-card {
+                    grid-template-columns: 1fr;
+                }
+                .card-meta {
+                    border-right: none;
+                    border-bottom: 1px solid var(--cyber-border);
+                    padding: 1.25rem 1.5rem;
+                }
+                .card-body-text { padding: 1.25rem 1.5rem; }
+            }
+        </style>
+    </head>
+
+    <body class="d-flex flex-column h-100">
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container px-5">
+                <a class="navbar-brand" href="index.html">Built to Defend. Trained to Detect.</a>
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+                        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main class="flex-shrink-0">
+
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="container px-5">
+                    <div class="page-header-inner">
+                        <p class="page-label">Operator File</p>
+                        <h1 class="page-title">Resume</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container px-5" style="position:relative; z-index:1;">
+
+                <!-- Experience -->
+                <div class="resume-section">
+                    <div class="section-heading">
+                        <h2><i class="bi bi-briefcase me-2"></i>Experience</h2>
+                        <a class="btn-cyber" href="assets/alexLopezResume.pdf">
+                            <i class="bi bi-download"></i>
+                            <span>Download Resume</span>
+                        </a>
+                    </div>
+
+                    <div class="timeline-card">
+                        <div class="card-meta">
+                            <div class="card-date">2021 — Present</div>
+                            <div class="card-title">AH-64E "Apache" Helicopter Pilot</div>
+                            <div class="card-org">US Army</div>
+                        </div>
+                        <div class="card-body-text">
+                            Entrusted with leading missions where precision, discipline, and sound judgment were critical. Planned and executed complex operations in dynamic environments, managing advanced weapons and targeting systems while maintaining constant situational awareness. Worked closely with ground forces and command teams to provide reconnaissance and close air support, translating strategy into real-time action. The role demanded calm decision-making under pressure, accountability for crew and aircraft, and an unwavering commitment to mission success and safety.
+                        </div>
+                    </div>
+
+                    <div class="timeline-card">
+                        <div class="card-meta">
+                            <div class="card-date">April 2018 — May 2021</div>
+                            <div class="card-title">AH-64E "Apache" Helicopter Crew Chief</div>
+                            <div class="card-org">US Army</div>
+                        </div>
+                        <div class="card-body-text">
+                            Responsible for the maintenance, readiness, and safety of one of the Army's most advanced combat aircraft. Oversaw inspections, troubleshooting, and repairs to ensure the aircraft remained mission capable at all times. Worked directly alongside pilots and maintenance teams to diagnose mechanical issues, manage flight line operations, and prepare the aircraft for complex missions. The role required technical precision, attention to detail, and a deep sense of ownership — knowing that aircrew safety and mission success depended on the quality of every inspection and repair.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="resume-section">
+                    <div class="section-heading">
+                        <h2><i class="bi bi-mortarboard me-2"></i>Education</h2>
+                    </div>
+
+                    <div class="timeline-card edu">
+                        <div class="card-meta">
+                            <div class="card-date">January 2025 — May 2027</div>
+                            <div class="card-title">Bachelor of Science — Information Technology</div>
+                            <div class="card-org">Georgia Southern University &nbsp;·&nbsp; Savannah, GA</div>
+                        </div>
+                        <div class="card-body-text">
+                            Pursuing a BSIT with a focus on cybersecurity, building technical depth in network security, systems administration, and threat analysis — directly aligned with a career in security operations and defense.
+                        </div>
+                    </div>
+
+                    <div class="timeline-card edu">
+                        <div class="card-meta">
+                            <div class="card-date">October 2019 — June 2020</div>
+                            <div class="card-title">Associate of Arts — General Studies</div>
+                            <div class="card-org">American Military University</div>
+                        </div>
+                        <div class="card-body-text">
+                            Built a broad academic foundation across multiple disciplines, enhancing critical thinking, communication, and problem-solving skills that support continued success in technology and cybersecurity.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="resume-section">
+                    <div class="section-heading">
+                        <h2><i class="bi bi-cpu me-2"></i>Skills</h2>
+                    </div>
+
+                    <p class="subsection-label"><i class="bi bi-tools"></i> Professional Skills</p>
+                    <div class="skills-grid mb-4">
+                        <div class="skill-tag">System Administration</div>
+                        <div class="skill-tag">Networking</div>
+                        <div class="skill-tag">Risk Mitigation</div>
+                        <div class="skill-tag">Threat Detection</div>
+                        <div class="skill-tag">Incident Response</div>
+                        <div class="skill-tag">Vulnerability Management</div>
+                        <div class="skill-tag">SIEM</div>
+                        <div class="skill-tag">Log Analysis & Monitoring</div>
+                        <div class="skill-tag">Malware Analysis</div>
+                        <div class="skill-tag">Network Traffic Analysis</div>
+                        <div class="skill-tag">Endpoint Security & EDR</div>
+                        <div class="skill-tag">Penetration Testing Fundamentals</div>
+                        <div class="skill-tag">Access Control & Identity Management</div>
+                        <div class="skill-tag">Security Compliance & Frameworks</div>
+                    </div>
+
+                    <p class="subsection-label"><i class="bi bi-code-slash"></i> Languages</p>
+                    <div class="skills-grid">
+                        <div class="skill-tag">HTML</div>
+                        <div class="skill-tag">CSS</div>
+                        <div class="skill-tag">JavaScript</div>
+                        <div class="skill-tag">Python</div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div class="resume-section pb-5">
+                    <div class="section-heading">
+                        <h2><i class="bi bi-award me-2"></i>Certifications</h2>
+                    </div>
+
+                    <div class="cert-grid">
+                        <div class="cert-badge">
+                            <img src="assets/compTIA-Aplus.png" alt="CompTIA A+" title="CompTIA A+" />
+                        </div>
+                        <div class="cert-badge">
+                            <img src="assets/compTIA-Netplus.png" alt="CompTIA Network+" title="CompTIA Network+" />
+                        </div>
+                        <div class="cert-badge">
+                            <img src="assets/compTIA-Secplus.png" alt="CompTIA Security+" title="CompTIA Security+" />
+                        </div>
+                        <div class="cert-badge">
+                            <img src="assets/compTIA-CySAplus.png" alt="CompTIA CySA+" title="CompTIA Cybersecurity Analyst (CySA+)" />
+                        </div>
+                        <div class="cert-badge">
+                            <img src="assets/compTIA-CIOS.png" alt="CompTIA CIOS" title="CompTIA IT Operations Specialist (CIOS)" />
+                        </div>
+                        <div class="cert-badge">
+                            <img src="assets/compTIA-CSIS.png" alt="CompTIA CSIS" title="CompTIA Secure Infrastructure Specialist (CSIS)" />
+                        </div>
+                        <div class="cert-badge">
+                            <img src="assets/compTIA-CSAP.png" alt="CompTIA CSAP" title="CompTIA Security Analytics Professional (CSAP)" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container px-5">
+                <div class="footer-inner">
+                    <p class="footer-copy mb-0">&copy; 2026 <span>Alex Lopez</span> &mdash; All rights reserved.</p>
+                    <p class="footer-copy mb-0" style="font-size:0.6rem; opacity:0.5;">CYBERSECURITY_PORTFOLIO // v2.0</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS -->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

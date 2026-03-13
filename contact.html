@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="Alex Lopez — Contact" />
+        <meta name="author" content="Alex Lopez" />
+        <title>Cybersecurity_Resume/Portfolio</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Fonts -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet" />
+        <!-- Core theme CSS-->
+        <link href="css/styles.css" rel="stylesheet" />
+
+        <style>
+            :root {
+                --cyber-dark:    #0a0e17;
+                --cyber-darker:  #060910;
+                --cyber-panel:   #0d1420;
+                --cyber-border:  #1a2d40;
+                --cyber-teal:    #0097b2;
+                --cyber-cyan:    #00c8ff;
+                --cyber-muted:   #5a7a8a;
+                --cyber-light:   #c9d1d9;
+                --mono:          'Share Tech Mono', monospace;
+            }
+
+            *, *::before, *::after { box-sizing: border-box; }
+
+            body {
+                background-color: var(--cyber-dark);
+                color: var(--cyber-light);
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                margin: 0;
+                overflow-x: hidden;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+            }
+
+            /* Scanline overlay */
+            body::before {
+                content: '';
+                position: fixed;
+                inset: 0;
+                background: repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(0,151,178,0.015) 2px,
+                    rgba(0,151,178,0.015) 4px
+                );
+                pointer-events: none;
+                z-index: 0;
+            }
+
+            /* ── Navbar ── */
+            .navbar {
+                background: rgba(6, 9, 16, 0.92) !important;
+                border-bottom: 1px solid var(--cyber-border);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                padding: 0.85rem 0;
+                position: sticky;
+                top: 0;
+                z-index: 100;
+            }
+
+            .navbar-brand {
+                font-family: var(--mono);
+                font-size: 0.8rem;
+                color: var(--cyber-teal) !important;
+                letter-spacing: 0.05em;
+                text-decoration: none;
+            }
+
+            .navbar-brand::before {
+                content: '> ';
+                color: var(--cyber-cyan);
+                opacity: 0.6;
+            }
+
+            .nav-link {
+                font-family: var(--mono);
+                font-size: 0.75rem;
+                color: var(--cyber-muted) !important;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                padding: 0.5rem 1rem !important;
+                transition: color 0.2s;
+                position: relative;
+            }
+
+            .nav-link::after {
+                content: '';
+                position: absolute;
+                bottom: 0; left: 1rem; right: 1rem;
+                height: 1px;
+                background: var(--cyber-teal);
+                transform: scaleX(0);
+                transition: transform 0.2s;
+            }
+
+            .nav-link:hover { color: var(--cyber-teal) !important; }
+            .nav-link:hover::after { transform: scaleX(1); }
+
+            .navbar-toggler { border-color: var(--cyber-border); }
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 151, 178, 0.9%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            }
+
+            /* ── Page Header ── */
+            .page-header {
+                padding: 4rem 0 3rem;
+                border-bottom: 1px solid var(--cyber-border);
+                position: relative;
+                overflow: hidden;
+            }
+
+            .page-header::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background-image:
+                    linear-gradient(rgba(0,151,178,0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,151,178,0.03) 1px, transparent 1px);
+                background-size: 60px 60px;
+            }
+
+            .page-header::after {
+                content: '';
+                position: absolute;
+                top: -50%; left: 50%;
+                transform: translateX(-50%);
+                width: 60vw; height: 60vw;
+                background: radial-gradient(ellipse, rgba(0,151,178,0.06) 0%, transparent 65%);
+                pointer-events: none;
+            }
+
+            .page-header-inner {
+                position: relative;
+                z-index: 1;
+                text-align: center;
+            }
+
+            .page-label {
+                font-family: var(--mono);
+                font-size: 0.68rem;
+                color: var(--cyber-teal);
+                letter-spacing: 0.25em;
+                text-transform: uppercase;
+                margin-bottom: 0.75rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.75rem;
+            }
+
+            .page-label::before,
+            .page-label::after {
+                content: '';
+                display: inline-block;
+                width: 40px; height: 1px;
+                background: var(--cyber-teal);
+                opacity: 0.5;
+            }
+
+            .page-title {
+                font-size: clamp(2.5rem, 5vw, 3.5rem);
+                font-weight: 800;
+                margin-bottom: 0.5rem;
+                background: linear-gradient(135deg, var(--cyber-teal) 0%, var(--cyber-cyan) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .page-subtitle {
+                font-size: 0.9rem;
+                color: var(--cyber-muted);
+                margin: 0;
+            }
+
+            /* ── Contact Section ── */
+            .contact-section {
+                flex: 1;
+                display: flex;
+                align-items: center;
+                padding: 5rem 0;
+                position: relative;
+                z-index: 1;
+            }
+
+            .contact-panel {
+                background: #0d1117;
+                border: 1px solid var(--cyber-border);
+                border-top: 3px solid var(--cyber-teal);
+                max-width: 680px;
+                margin: 0 auto;
+                padding: 3rem;
+                position: relative;
+                overflow: hidden;
+            }
+
+            /* Corner accent */
+            .contact-panel::after {
+                content: '';
+                position: absolute;
+                bottom: 0; right: 0;
+                width: 80px; height: 80px;
+                background: linear-gradient(135deg, transparent 50%, rgba(0,151,178,0.08) 50%);
+                pointer-events: none;
+            }
+
+            .contact-panel-label {
+                font-family: var(--mono);
+                font-size: 0.65rem;
+                color: var(--cyber-teal);
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                margin-bottom: 2rem;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+            .contact-panel-label::before {
+                content: '';
+                display: inline-block;
+                width: 18px; height: 2px;
+                background: var(--cyber-teal);
+            }
+
+            /* ── Contact Items ── */
+            .contact-item {
+                display: flex;
+                align-items: center;
+                gap: 1.25rem;
+                padding: 1.25rem 1.5rem;
+                border: 1px solid var(--cyber-border);
+                background: rgba(0,151,178,0.03);
+                margin-bottom: 1rem;
+                text-decoration: none;
+                transition: all 0.25s;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .contact-item::before {
+                content: '';
+                position: absolute;
+                inset: 0;
+                background: rgba(0,151,178,0.07);
+                transform: translateX(-101%);
+                transition: transform 0.25s;
+            }
+
+            .contact-item:hover {
+                border-color: var(--cyber-teal);
+                transform: translateX(4px);
+            }
+
+            .contact-item:hover::before {
+                transform: translateX(0);
+            }
+
+            .contact-item:last-child {
+                margin-bottom: 0;
+            }
+
+            .contact-icon {
+                width: 42px;
+                height: 42px;
+                background: rgba(0,151,178,0.1);
+                border: 1px solid rgba(0,151,178,0.25);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.1rem;
+                color: var(--cyber-teal);
+                flex-shrink: 0;
+                position: relative;
+                z-index: 1;
+                transition: background 0.25s;
+            }
+
+            .contact-item:hover .contact-icon {
+                background: rgba(0,151,178,0.2);
+            }
+
+            .contact-info {
+                position: relative;
+                z-index: 1;
+            }
+
+            .contact-info-label {
+                font-family: var(--mono);
+                font-size: 0.62rem;
+                color: var(--cyber-muted);
+                letter-spacing: 0.15em;
+                text-transform: uppercase;
+                margin-bottom: 0.2rem;
+            }
+
+            .contact-info-value {
+                font-size: 0.95rem;
+                color: var(--cyber-light);
+                font-weight: 500;
+                transition: color 0.25s;
+            }
+
+            .contact-item:hover .contact-info-value {
+                color: #fff;
+            }
+
+            .contact-arrow {
+                margin-left: auto;
+                color: var(--cyber-teal);
+                opacity: 0;
+                transform: translateX(-8px);
+                transition: all 0.25s;
+                position: relative;
+                z-index: 1;
+                font-size: 1rem;
+            }
+
+            .contact-item:hover .contact-arrow {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            /* ── Footer ── */
+            footer {
+                background: var(--cyber-darker);
+                border-top: 1px solid var(--cyber-border);
+                padding: 1.5rem 0;
+            }
+
+            .footer-inner {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                gap: 0.5rem;
+            }
+
+            .footer-copy {
+                font-family: var(--mono);
+                font-size: 0.68rem;
+                color: var(--cyber-muted);
+                letter-spacing: 0.08em;
+            }
+
+            .footer-copy span { color: var(--cyber-teal); }
+
+            /* ── Animations ── */
+            .contact-item {
+                animation: fadeSlideUp 0.5s ease both;
+            }
+
+            .contact-item:nth-child(1) { animation-delay: 0.05s; }
+            .contact-item:nth-child(2) { animation-delay: 0.12s; }
+            .contact-item:nth-child(3) { animation-delay: 0.19s; }
+            .contact-item:nth-child(4) { animation-delay: 0.26s; }
+
+            @keyframes fadeSlideUp {
+                from { opacity: 0; transform: translateY(12px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container px-5">
+                <a class="navbar-brand" href="index.html">Built to Defend. Trained to Detect.</a>
+                <button class="navbar-toggler" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="resume.html">Resume</a></li>
+                        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <main>
+            <!-- Page Header -->
+            <div class="page-header">
+                <div class="container px-5">
+                    <div class="page-header-inner">
+                        <p class="page-label">Establish Connection</p>
+                        <h1 class="page-title">Get in Touch</h1>
+                        <p class="page-subtitle">Let's work together.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact -->
+            <section class="contact-section">
+                <div class="container px-5" style="width:100%;">
+                    <div class="contact-panel">
+                        <p class="contact-panel-label">Contact Channels</p>
+
+                        <a class="contact-item" href="mailto:alexmlopez7823@gmail.com">
+                            <div class="contact-icon"><i class="bi bi-envelope-fill"></i></div>
+                            <div class="contact-info">
+                                <div class="contact-info-label">Email</div>
+                                <div class="contact-info-value">alexmlopez7823@gmail.com</div>
+                            </div>
+                            <i class="bi bi-arrow-right contact-arrow"></i>
+                        </a>
+
+                        <a class="contact-item" href="tel:+16268795565">
+                            <div class="contact-icon"><i class="bi bi-telephone-fill"></i></div>
+                            <div class="contact-info">
+                                <div class="contact-info-label">Phone</div>
+                                <div class="contact-info-value">+1 (626) 879-5565</div>
+                            </div>
+                            <i class="bi bi-arrow-right contact-arrow"></i>
+                        </a>
+
+                        <a class="contact-item" href="https://www.linkedin.com/in/alexmlopez7823/" target="_blank" rel="noopener">
+                            <div class="contact-icon"><i class="bi bi-linkedin"></i></div>
+                            <div class="contact-info">
+                                <div class="contact-info-label">LinkedIn</div>
+                                <div class="contact-info-value">linkedin.com/in/alexmlopez7823</div>
+                            </div>
+                            <i class="bi bi-arrow-right contact-arrow"></i>
+                        </a>
+
+                        <a class="contact-item" href="https://github.com/alexmlopez-tech" target="_blank" rel="noopener">
+                            <div class="contact-icon"><i class="bi bi-github"></i></div>
+                            <div class="contact-info">
+                                <div class="contact-info-label">GitHub</div>
+                                <div class="contact-info-value">github.com/alexmlopez-tech</div>
+                            </div>
+                            <i class="bi bi-arrow-right contact-arrow"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <div class="container px-5">
+                <div class="footer-inner">
+                    <p class="footer-copy mb-0">&copy; 2026 <span>Alex Lopez</span> &mdash; All rights reserved.</p>
+                    <p class="footer-copy mb-0" style="font-size:0.6rem; opacity:0.5;">CYBERSECURITY_PORTFOLIO // v2.0</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap core JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS -->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>
